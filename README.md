@@ -1,7 +1,7 @@
 # Web Payments Demo
 The code in this repository implements a demo of the proposed [Web Payments](https://www.w3.org/Payments/WG/) system. In the different subfolders you will find:
 * A chrome browser extension which implements payment mediation. This extension works for Opera, Chrome and possibly other Chromium-based browsers.
-* A simple [payment app](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/tommypay.html).
+* A simple [payment app](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/).
 * A [demo webshop](https://tommythorsen.github.io/webpayments-demo/merchants/clothing/) which allows you to "purchase" items with web payments.
 
 ## Detailed Instructions
@@ -18,7 +18,7 @@ The central component of this demo, is the extension which implements payment me
 Note the new **$** icon next to the address bar. Clicking on this icon will display the list of installed payment apps. It is currently empty, so let's go to step 2 and install a payment app.
 
 ### 2. Installing a payment app
-1. Navigate to the [payment app](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/tommypay.html) web page.
+1. Navigate to the [payment app](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/) web page.
 2. Click on the "install Payment App" button.
 3. You should see an alert dialog telling you that the TommyPay payment app was installed.
 4. Click on the **$** icon next to the address bar to verify that the payment app is now available for payments.
