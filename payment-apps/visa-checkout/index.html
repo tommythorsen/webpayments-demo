@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function onVisaCheckoutReady(){
+                console.log("onVisaCheckoutReady()");
+                var interval = setInterval(function() {
+                    if (navigator.payments) {
+                        clearInterval(interval);
+                        onLoaded();
+                    }
+                }, 100);
+
+                function onLoaded() {
+                    console.log("loaded!!");
+                    navigator.payments.getRequest()
+                    .then(function(paymentRequest) {
+                        if (!paymentRequest) {
+                            document.getElementById("installDiv").style.display = "inline";
+                            return false;
+                        }
+
+                        var item = paymentRequest.details.items[0];
+
+                        // Now that we have the "payment request", we can start the Visa Checkout flow
+                        console.log(JSON.stringify(paymentRequest));
+                        V.init({
+                            apikey: "7O07VN664O10JW6A9ESS113p8sf9JeGzr6_2haC9F9m_ANtLM",
+                            paymentRequest: {
+                                currencyCode: item.amount.currency,
+                                total: item.amount.value
+                            }
+                        });
+                        V.on("payment.success",
+                            function(payment) {
+                                response = {
+                                    "methodName" : "visa checkout",
+                                    "details" : payment
+                                }
+                                navigator.payments.submitPaymentResponse(response);
+                            });
+                        V.on("payment.cancel",
+                            function(payment) {
+                                navigator.payments.submitPaymentResponse(null);
+                            });
+                        V.on("payment.error",
+                            function(payment, error) {
+                                navigator.payments.submitPaymentResponse(null);
+                            });
+                        document.getElementById("button").click();
+                    })
+                    .catch(function(error) {
+                        console.log("ERROR: " + error);
+                    });
+                }
+            }
+
+            function install() {
+                console.log("install!!");
+                // A hacky way of getting an absolute url
+                var a = document.createElement("a");
+                a.href = "index.html";
+                navigator.payments.registerPaymentApp({
+                    name: "Visa Checkout",
+                    start_url: a.href,
+                    enabled_methods: ["visa-checkout"]
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <img alt="Visa Checkout" class="v-button" id="button" role="button"
+            src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png"
+            style="display: none"/>
+        <div id="installDiv" style="display:none">
+            <h1>Visa Checkout Payment App</h1>
+            <button id="install" onclick="install()">Install Payment App</button>
+        </div>
+        <script type="text/javascript"
+            src="https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js">
+        </script>
+    </body>
+</html>

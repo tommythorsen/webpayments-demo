@@ -9,7 +9,7 @@
 function buy(key) {
     var item = items[key];
     var request = new PaymentRequest(
-            ["tommypay"],
+            ["tommypay", "visa-checkout"],
             {
                 items: [
                     {
