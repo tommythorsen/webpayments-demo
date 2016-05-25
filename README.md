@@ -8,11 +8,11 @@ The code in this repository implements a demo of the proposed [Web Payments](htt
 ### 1. Installing the extension
 The central component of this demo, is the extension which implements payment mediation in your browser. Since it is not uploaded to the Chrome Web Store, there are a few manual steps necessary to install it.
 
-1. Download the extension by [clicking here](https://tommythorsen.github.io/webpayments-demo/mediator-extension/mediator-extension.nex).
+1. Download the extension by [clicking here](https://tommythorsen.github.io/webpayments-demo/files/mediator-extension.crx).
 2. Open the extensions pane by entering `chrome://extensions` in the address field.
-3. Drag the extension file (mediator-extension.nex) you downloaded earlier from a file browser window and drop it onto the extensions pane. Your extension pane should now look something like this:
+3. Drag the extension file (mediator-extension.crx) you downloaded earlier from a file browser window and drop it onto the extensions pane. Your extension pane should now look something like this:
 
-![Screenshot of extensions pane](images/mediator-extension.png)
+![Screenshot of extensions pane](files/mediator-extension.png)
 *Screenshot is from the Opera browser*
 
 Note the new **$** icon next to the address bar. Clicking on this icon will display the list of installed payment apps. It is currently empty, so let's go to step 2 and install a payment app.
