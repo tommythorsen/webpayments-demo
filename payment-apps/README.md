@@ -5,4 +5,4 @@ This folder contain a set of payment app implementations. Below is a short descr
 A very primitive test app. Instead of a realistic payment UX, it shows the raw payment request JSON.
 
 ## [Visa Checkout](https://tommythorsen.github.io/webpayments-demo/payment-apps/visa-checkout/)
-This is a simple wrapper around the Visa Checkout sandbox as described [here](https://developer.visa.com/products/visa_checkout/guides).
+This is a simple wrapper around the Visa Checkout sandbox as described [here](https://developer.visa.com/products/visa_checkout/guides). You will need to create a user account at https://sandbox.secure.checkout.visa.com to be able to log into this payment app.
