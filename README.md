@@ -39,4 +39,6 @@ Don't worry, you don't have to spend any real money to try this.
 
 1. Navigate to the [demo webshop](https://tommythorsen.github.io/webpayments-demo/merchants/clothing/).
 2. Click the "Buy" button for an item that you would like to buy.
-3. TBD
+3. This will pop up the payment app selector in a new window. We only have one payment app, so the choice is simple. Click "Pay" on the TommyPay payment app.
+4. Now we are in the payment app. TommyPay is a very primitive app that just shows the raw json of the payment request. Press "Pay" to finalize the payment or "Cancel" if you have changed your mind about your purchase.
+5. If you pressed "Pay" in step 4, you should now be on the receipt page. Congratulations on your purchase!
