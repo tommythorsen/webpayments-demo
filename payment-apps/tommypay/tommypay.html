@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TommyPay</title>
+    </head>
+    <body>
+        <h2>TommyPay</h2>
+        <p><i>The secure payment app that will definitely not steal all your money</i></p>
+
+        <pre id="paymentView"></pre>
+
+        <button style="display:none" id="pay" onclick="pay()">Pay</button>
+        <button style="display:none" id="cancel" onclick="cancel()">Cancel</button>
+        <button style="display:none" id="install" onclick="install()">Install Payment App</button>
+
+        <script>
+            var payButton = document.getElementById("pay");
+            var cancelButton = document.getElementById("cancel");
+            var installButton = document.getElementById("install");
+            var paymentView = document.getElementById("paymentView");
+
+            var interval = setInterval(function() {
+                if (navigator.payments) {
+                    clearInterval(interval);
+                    onLoaded();
+                }
+            }, 100);
+
+            function onLoaded() {
+                console.log("loaded!!");
+                navigator.payments.getRequest()
+                .then(function(paymentRequest) {
+                    if (paymentRequest) {
+                        paymentView.textContent = "Confirm Payment\n\n" +
+                            JSON.stringify(paymentRequest, null, 2);
+                        payButton.style.display = "inline";
+                        cancelButton.style.display = "inline";
+                    } else {
+                        installButton.style.display = "inline";
+                    }
+                })
+                .catch(function(error) {
+                    console.log("ERROR: " + error);
+                    installButton.style.display = "inline";
+                });
+            }
+
+            function pay() {
+                console.log("pay!!");
+                navigator.payments.submitPaymentResponse({
+                    methodName: "tommypay",
+                    details: {}
+                });
+            }
+
+            function cancel() {
+                console.log("cancel!!");
+                navigator.payments.submitPaymentResponse(null);
+            }
+
+            function install() {
+                console.log("install!!");
+                // A hacky way of getting an absolute url
+                var a = document.createElement("a");
+                a.href = "tommypay.html";
+                navigator.payments.registerPaymentApp({
+                    name: "TommyPay",
+                    start_url: a.href,
+                    enabled_methods: ["tommypay"]
+                });
+            }
+        </script>
+    </body>
+</html>
+

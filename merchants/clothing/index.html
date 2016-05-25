@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Honest Tommy's clothing webshop</title>
+
+        <link rel="stylesheet" href="style.css"/>
+        <script src="inventory.js"></script>
+        <script>
+function buy(key) {
+    var item = items[key];
+    var request = new PaymentRequest(
+            ["tommypay"],
+            {
+                items: [
+                    {
+                        id: "foo",
+                        label: item.name,
+                        amount: { currency: "USD", value: item.price }
+                    }
+                ],
+                shippingOptions: [
+                    {
+                        id: "bar",
+                        label: "Express shipping",
+                        amount: { currency: "USD", value: "5.00" }
+                    }
+                ]
+            });
+    request.show()
+    .then(function(paymentResponse) {
+        console.log("payment response: " + JSON.stringify(paymentResponse));
+        if (paymentResponse) {
+            location.href = "receipt.html?id=" + key;
+        }
+    })
+    .catch(function(error) {
+        console.log("ERROR: " + error);
+    });
+}
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <h1>Honest Tommy's clothing webshop</h1>
+        </header>
+        <div id="items"></div>
+        <footer>
+            <a href="http://www.freepik.com/free-photos-vectors/design">
+                This page uses free images from Freepik
+            </a>
+        </footer>
+        <script>
+            var div = document.getElementById("items");
+            for (var key in items) {
+                var item = items[key];
+                div.innerHTML += '<item>' +
+                    '<img src="' + item.picture + '"/>' +
+                    '<div>' +
+                    '<p>' + item.name + '</p>' +
+                    '<p>$' + item.price + '</p>' +
+                    '<button onclick="buy(\'' + key + '\')">Buy</button>' +
+                    '<div>'
+                    '</item>\n';
+            }
+        </script>
+    </body>
+</html>
