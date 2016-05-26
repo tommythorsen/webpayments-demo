@@ -1,6 +1,6 @@
 # Web Payments Demo
 The code in this repository implements a demo of the proposed [Web Payments](https://www.w3.org/Payments/WG/) system. In the different subfolders you will find:
-* A chrome browser extension which implements payment mediation. This extension works for Opera, Chrome and possibly other Chromium-based browsers.
+* A chrome [browser extension](mediator-extension) which implements payment mediation. This extension works for Opera, Chrome and possibly other Chromium-based browsers.
 * A simple [payment app](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/).
 * A [demo webshop](https://tommythorsen.github.io/webpayments-demo/merchants/clothing/) which allows you to "purchase" items with web payments.
 
