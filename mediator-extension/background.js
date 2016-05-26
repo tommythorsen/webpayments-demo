@@ -1,9 +1,20 @@
 "use strict";
 
+// This is the "backend" for the extension. It is responsible for managing
+// communication between the merchant and the payment app, and for handling
+// installation of new web apps.
+
 var pendingPaymentRequest = null;
 var pendingResponseCallback = null;
 var paymentTab = null;
 
+// The implementation of PaymentRequest.show(). It populates the "pending"
+// variables above and opens the UI for selecting a matching payment app.
+//
+// BUG: The popup window is not very nice. It might have looked nicer if we
+//      could overlay the payment app selection UI (and the payment app UI
+//      itself) over the merchant page.
+//
 function show(paymentRequest, sendResponse) {
     console.log("show: " + JSON.stringify(paymentRequest));
     // TODO: Handle the case where there is already a pending request
@@ -23,6 +34,10 @@ function show(paymentRequest, sendResponse) {
     return true;
 }
 
+// The implementation of navigator.payments.registerPaymentApp(). This function
+// uses the chrome storage API to store the payment app entries in a dictionary
+// keyed on the start_url property of the payment app.
+//
 function registerPaymentApp(paymentApp, sendResponse) {
     console.log("registerPaymentApp: " + JSON.stringify(paymentApp));
     var entry = {}
@@ -32,11 +47,23 @@ function registerPaymentApp(paymentApp, sendResponse) {
     sendResponse({to: "webpayments-polyfill.js", result: true});
 }
 
+// The implementation of navigator.payments.getRequest(). The payment app
+// uses this to fetch the pending payment request.
+//
+// BUG: We should check that we hand the payment request out to the correct
+//      web page. Not so much for the sake of security, since this extension is
+//      mainly for testing, but mostly to avoid potentially confusing
+//      situations when visiting multiple merchants at the same time.
+//
 function getRequest(sendResponse) {
     console.log("getRequest");
     sendResponse({to: "webpayments-polyfill.js", request: pendingPaymentRequest});
 }
 
+// The implementation of navigator.payments.submitPaymentResponse(). Passes
+// the payment response back to the merchant, closes the payment app window,
+// and removes the pending payment request.
+//
 function submitPaymentResponse(paymentResponse, sendResponse) {
     console.log("submitPaymentResponse: " + JSON.stringify(paymentResponse));
     if (paymentTab) {
@@ -51,6 +78,9 @@ function submitPaymentResponse(paymentResponse, sendResponse) {
     sendResponse({to: "webpayments-polyfill.js", result: true});
 }
 
+// Message listener for receiving messages from the polyfill functions via
+// content.js.
+//
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     if (message.command == "show") {
         return show(message.param, sendResponse);
