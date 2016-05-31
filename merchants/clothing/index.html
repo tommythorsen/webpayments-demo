@@ -14,16 +14,16 @@ function buy(key) {
             {
                 items: [
                     {
-                        id: "foo",
+                        id: "total",
                         label: item.name,
-                        amount: { currency: "USD", value: item.price }
+                        amount: { currency: "USD", currencyCode: "USD", value: item.price }
                     }
                 ],
                 shippingOptions: [
                     {
-                        id: "bar",
+                        id: "express",
                         label: "Express shipping",
-                        amount: { currency: "USD", value: "5.00" }
+                        amount: { currency: "USD", currencyCode: "USD",value: "5.00" }
                     }
                 ]
             });
