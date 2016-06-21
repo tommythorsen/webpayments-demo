@@ -9,24 +9,32 @@
         <script>
 function buy(key) {
     var item = items[key];
-    var request = new PaymentRequest(
-            ["tommypay", "visa-checkout"],
+    var methodData = [
+        {
+            supportedMethods: ["tommypay", "visa-checkout"],
+        }
+    ]
+    var details = {
+        total: {
+            label: "Total",
+            amount: { currency: "USD", currencyCode: "USD", value: item.price }
+        },
+        displayItems: [
             {
-                items: [
-                    {
-                        id: "total",
-                        label: item.name,
-                        amount: { currency: "USD", currencyCode: "USD", value: item.price }
-                    }
-                ],
-                shippingOptions: [
-                    {
-                        id: "express",
-                        label: "Express shipping",
-                        amount: { currency: "USD", currencyCode: "USD",value: "5.00" }
-                    }
-                ]
-            });
+                label: item.name,
+                amount: { currency: "USD", currencyCode: "USD", value: item.price }
+            }
+        ],
+        shippingOptions: [
+            {
+                id: "express",
+                label: "Express shipping",
+                amount: { currency: "USD", currencyCode: "USD",value: "5.00" }
+            }
+        ],
+        modifiers: []
+    }
+    var request = new PaymentRequest(methodData, details);
     request.show()
     .then(function(paymentResponse) {
         console.log("payment response: " + JSON.stringify(paymentResponse));

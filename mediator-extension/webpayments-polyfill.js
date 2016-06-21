@@ -59,14 +59,13 @@ navigator.payments = {
 //
 //  https://www.w3.org/TR/payment-request/#paymentrequest-interface
 //
-// The "supportedMethods" and "details" parameters are mandatory. "options"
-// and "data" are optional.
+// The "methodData" and "details" parameters are mandatory. "options"
+// is optional.
 //
-function PaymentRequest(supportedMethods, details, options, data) {
-    this.supportedMethods = supportedMethods;
+function PaymentRequest(methodData, details, options) {
+    this.methodData = methodData;
     this.details = details;
     this.options = options;
-    this.data = data;
     this.show = function() {
         console.log("PaymentRequest.show() called");
         var request = JSON.stringify(this);

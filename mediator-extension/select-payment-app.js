@@ -13,10 +13,22 @@ function appendPaymentApp(paymentApp) {
 }
 
 chrome.storage.local.get(null, function(items) {
+    var ids = {};
+    var idlist = window.location.search.substring(5).split(',');
+    for (var id of idlist) {
+        ids[id] = true;
+    }
+
     var hasApps = false;
     for (var key in items) {
-        appendPaymentApp(items[key]);
-        hasApps = true;
+        var paymentApp = items[key];
+        for (var id of paymentApp.enabled_methods) {
+            if (ids[id]) {
+                appendPaymentApp(paymentApp);
+                hasApps = true;
+                break;
+            }
+        }
     }
     if (!hasApps) {
         document.getElementById("empty").style.display = "block";

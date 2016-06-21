@@ -19,7 +19,7 @@
                             return false;
                         }
 
-                        var item = paymentRequest.details.items[0];
+                        var item = paymentRequest.details.total;
 
                         // Now that we have the "payment request", we can start the Visa Checkout flow
                         console.log(JSON.stringify(paymentRequest));

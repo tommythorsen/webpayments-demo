@@ -16,11 +16,22 @@ var paymentTab = null;
 //      itself) over the merchant page.
 //
 function show(paymentRequest, sendResponse) {
-    console.log("show: " + JSON.stringify(paymentRequest));
+    console.log("show: " + paymentRequest);
     // TODO: Handle the case where there is already a pending request
     pendingPaymentRequest = JSON.parse(paymentRequest);
     pendingResponseCallback = sendResponse;
-    chrome.tabs.create({url: "select-payment-app.html", active: false}, function(tab) {
+    var identifiers = "";
+    for (var methodData of pendingPaymentRequest.methodData) {
+        for (var supportedMethod of methodData.supportedMethods) {
+            if (identifiers) identifiers += ",";
+            identifiers += supportedMethod;
+        }
+    }
+    var url = "select-payment-app.html";
+    if (identifiers) {
+        url += "?ids=" + identifiers;
+    }
+    chrome.tabs.create({url: url, active: false}, function(tab) {
         paymentTab = tab;
         chrome.windows.create(
                 {
