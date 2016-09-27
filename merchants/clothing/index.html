@@ -17,18 +17,19 @@ function buy(key) {
     var details = {
         total: {
             label: "Total",
-            amount: { currency: "USD", currencyCode: "USD", value: item.price }
+            amount: { currency: "USD", value: item.price }
         },
         displayItems: [
             {
                 label: item.name,
-                amount: { currency: "USD", currencyCode: "USD", value: item.price }
+                amount: { currency: "USD", value: item.price }
             }
         ],
         shippingOptions: [
             {
+                id: "express",
                 label: "Express shipping",
-                amount: { currency: "USD", currencyCode: "USD",value: "5.00" }
+                amount: { currency: "USD", value: "5.00" }
             }
         ],
         modifiers: []
