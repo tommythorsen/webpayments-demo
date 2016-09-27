@@ -31,8 +31,7 @@ function buy(key) {
                 label: "Express shipping",
                 amount: { currency: "USD", value: "5.00" }
             }
-        ],
-        modifiers: []
+        ]
     }
     var request = new PaymentRequest(methodData, details);
     request.show()
