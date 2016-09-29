@@ -33,17 +33,19 @@ function buy(key) {
             }
         ]
     }
-    var request = new PaymentRequest(methodData, details);
-    request.show()
-    .then(function(paymentResponse) {
-        console.log("payment response: " + JSON.stringify(paymentResponse));
-        if (paymentResponse) {
-            location.href = "receipt.html?id=" + key;
-        }
-    })
-    .catch(function(error) {
-        console.log("ERROR: " + error);
-    });
+
+    try {
+        var request = new PaymentRequest(methodData, details);
+        request.show()
+        .then(function(paymentResponse) {
+            console.log("payment response: " + JSON.stringify(paymentResponse));
+            if (paymentResponse) {
+                location.href = "receipt.html?id=" + key;
+            }
+        });
+    } catch(error) {
+        window.alert(error);
+    }
 }
         </script>
     </head>
