@@ -39,7 +39,6 @@ function buy(key) {
         request.show()
         .then(function(paymentResponse) {
             console.log("payment response: " + JSON.stringify(paymentResponse));
-            window.alert(JSON.stringify(paymentResponse));
             if (paymentResponse) {
                 location.href = "receipt.html?id=" + key;
             }
