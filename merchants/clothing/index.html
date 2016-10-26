@@ -42,6 +42,9 @@ function buy(key) {
             if (paymentResponse) {
                 location.href = "receipt.html?id=" + key;
             }
+        })
+        .catch(function(error) {
+            window.alert(error);
         });
     } catch(error) {
         window.alert(error);
