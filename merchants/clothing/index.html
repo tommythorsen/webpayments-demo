@@ -40,7 +40,7 @@ function buy(key) {
         .then(function(paymentResponse) {
             console.log("payment response:");
             console.log("  method name: " + paymentResponse.methodName);
-            console.log("  details: " + JSON.stringify(paymentResponse.details));
+            console.log("  details: " + paymentResponse.details);
             console.log("  payer name: " + paymentResponse.payerName);
             console.log("  payer email: " + paymentResponse.payerEmail);
             console.log("  payer phone: " + paymentResponse.payerPhone);
