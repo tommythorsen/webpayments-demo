@@ -33,9 +33,15 @@ function buy(key) {
             }
         ]
     }
+    var options = {
+        requestPayerName: true,
+        requestPayerEmail: true,
+        requestPayerPhone: true,
+        requestShipping: true
+    }
 
     try {
-        var request = new PaymentRequest(methodData, details);
+        var request = new PaymentRequest(methodData, details, options);
         request.show()
         .then(function(paymentResponse) {
             console.log("payment response:");
