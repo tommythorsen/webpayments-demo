@@ -47,6 +47,13 @@ function buy(key) {
 
     try {
         var request = new PaymentRequest(methodData, details, options);
+        request.addEventListener("shippingaddresschange", function(evt) {
+            console.log("shipping address changed");
+            console.log(JSON.stringify(evt));
+            evt.updateWith(new Promise(function(resolve) {
+                resolve(details);
+            }));
+        });
         request.show()
         .then(function(paymentResponse) {
             console.log("payment response:");
