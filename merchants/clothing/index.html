@@ -54,7 +54,7 @@ function buy(key) {
                 resolve(details);
             }));
         });
-        request.addEventListener("shippingoptionchanged", function(evt) {
+        request.addEventListener("shippingoptionchange", function(evt) {
             console.log("shipping option changed");
             console.log(JSON.stringify(evt));
             evt.updateWith(new Promise(function(resolve) {
