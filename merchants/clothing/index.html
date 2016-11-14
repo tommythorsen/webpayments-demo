@@ -50,16 +50,19 @@ function buy(key) {
         request.addEventListener("shippingaddresschange", function(evt) {
             console.log("shipping address changed");
             console.log(JSON.stringify(evt));
-            evt.updateWith(new Promise(function(resolve) {
-                resolve(details);
-            }));
+            evt.updateWith(Promise.resolve(details));
         });
         request.addEventListener("shippingoptionchange", function(evt) {
             console.log("shipping option changed");
             console.log(JSON.stringify(evt));
-            evt.updateWith(new Promise(function(resolve) {
-                resolve(details);
-            }));
+            if (request.shippingOption === "regular") {
+                details.shippingOptions[0].selected = true;
+                details.shippingOptions[1].selected = false;
+            } else {
+                details.shippingOptions[0].selected = false;
+                details.shippingOptions[1].selected = true;
+            }
+            evt.updateWith(Promise.resolve(details));
         });
         request.show()
         .then(function(paymentResponse) {
