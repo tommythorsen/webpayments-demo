@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>TommyPay</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
         <h2>TommyPay</h2>
@@ -18,7 +19,7 @@
             function install() {
                 navigator.serviceWorker.register("./app.js")
                 .then(function(registration) {
-                    paymentView.textContent += "Registering TommyPay";
+                    paymentView.textContent += "Registering TommyPay\n";
                     return registration.paymentAppManager.setManifest({
                         label: "TommyPay",
                         options: [
@@ -29,9 +30,9 @@
                         }]
                     });
                 }).then(function() {
-                    paymentView.textContent += "TommyPay successfully registered";
+                    paymentView.textContent += "TommyPay successfully registered\n";
                 }).catch(function(error) {
-                    paymentView.textContent += error;
+                    paymentView.textContent += error + "\n";
                 });
             }
         </script>
