@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TommyPay</title>
+        <title>Install TommyPay</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
-        <h2>TommyPay</h2>
+        <h2>Install TommyPay</h2>
         <p><i>A very primitive payment app that shows the entire payment request passed
             to it as JSON.</i></p>
 
@@ -17,8 +17,10 @@
             var paymentView = document.getElementById("paymentView");
 
             function install() {
+                console.log("install()");
                 navigator.serviceWorker.register("./app.js")
                 .then(function(registration) {
+                    console.log("registering");
                     paymentView.textContent += "Registering TommyPay\n";
                     return registration.paymentAppManager.setManifest({
                         label: "TommyPay",
@@ -30,6 +32,7 @@
                         }]
                     });
                 }).then(function() {
+                    console.log("registered");
                     paymentView.textContent += "TommyPay successfully registered\n";
                 }).catch(function(error) {
                     paymentView.textContent += error + "\n";
