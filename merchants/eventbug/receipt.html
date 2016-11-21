@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Receipt</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css"/>
+        <script src="inventory.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Receipt</h1>
+        </header>
+        <p style="margin: 10px">Thank you for your purchase!</p>
+        <div id="item"></div>
+        <footer>
+            <a href="http://www.freepik.com/free-photos-vectors/design">
+                This page uses free images from Freepik
+            </a>
+        </footer>
+        <p style="clear: left; margin: 10px">
+            <a href="index.html">Continue shopping</a>
+        </p>
+        <script>
+            var key = location.search.substring(4);
+            console.log("KEY: " + key);
+            var div = document.getElementById("item");
+            var item = items[key];
+            div.innerHTML += '<item>' +
+                '<img src="' + item.picture + '"/>' +
+                '<div>' +
+                '<p>' + item.name + '</p>' +
+                '<p>$' + item.price + '</p>' +
+                '<div>'
+                '</item>\n';
+        </script>
+    </body>
+</html>

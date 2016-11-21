@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Honest Tommy's clothing webshop</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css"/>
+        <script src="inventory.js"></script>
+        <script>
+function buy(key) {
+    var item = items[key];
+    var methodData = [
+        {
+            supportedMethods: ["basic-card", "tommypay", "mastercard", "visa"],
+        }
+    ]
+    var details = {
+        total: {
+            label: "Total",
+            amount: { currency: "USD", value: item.price }
+        },
+        displayItems: [
+            {
+                label: item.name,
+                amount: { currency: "USD", value: item.price }
+            }
+        ],
+        shippingOptions: [
+            {
+                id: "regular",
+                label: "Regular snail-mail shipping",
+                amount: { currency: "USD", value: "2.00" }
+            },
+            {
+                id: "express",
+                label: "Express shipping",
+                amount: { currency: "USD", value: "5.00" }
+            }
+        ]
+    }
+    var options = {
+        requestPayerName: true,
+        requestPayerEmail: true,
+        requestPayerPhone: true,
+        requestShipping: true
+    }
+
+    try {
+        var request = new PaymentRequest(methodData, details, options);
+        request.show()
+        .then(function(paymentResponse) {
+            console.log("payment response:");
+            console.log("  method name: " + paymentResponse.methodName);
+            console.log("  details: " + JSON.stringify(paymentResponse.details));
+            console.log("  payer name: " + paymentResponse.payerName);
+            console.log("  payer email: " + paymentResponse.payerEmail);
+            console.log("  payer phone: " + paymentResponse.payerPhone);
+            if (paymentResponse) {
+                location.href = "receipt.html?id=" + key;
+            }
+        })
+        .catch(function(error) {
+            window.alert(error);
+        });
+    } catch(error) {
+        window.alert(error);
+    }
+}
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <h1>Honest Tommy's clothing webshop</h1>
+        </header>
+        <div id="items"></div>
+        <footer>
+            <a href="http://www.freepik.com/free-photos-vectors/design">
+                This page uses free images from Freepik
+            </a>
+        </footer>
+        <script>
+            var div = document.getElementById("items");
+            for (var key in items) {
+                var item = items[key];
+                div.innerHTML += '<item>' +
+                    '<img src="' + item.picture + '"/>' +
+                    '<div>' +
+                    '<p>' + item.name + '</p>' +
+                    '<p>$' + item.price + '</p>' +
+                    '<button onclick="buy(\'' + key + '\')">Buy</button>' +
+                    '<div>'
+                    '</item>\n';
+            }
+        </script>
+    </body>
+</html>

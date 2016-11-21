@@ -1,0 +1,55 @@
+body {
+    margin: 0px;
+}
+
+item {
+    width: 200px;
+    height: 200px;
+    margin: 10px 10px 40px 10px;
+    float: left;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+item > img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+item > div {
+    width: 200px;
+    height: 50px;
+    background-color: rgba(200, 200, 250, 0.5);
+    position: absolute;
+    bottom: 0px;
+}
+
+item > div > p {
+    margin: 5px;
+}
+
+item > div > button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 5px;
+}
+
+header {
+    padding: 5px;
+    background-color: #AAAADD;
+}
+
+header > h1 {
+    margin: 5px;
+}
+
+footer {
+    padding: 5px;
+    background-color: #AAAADD;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
