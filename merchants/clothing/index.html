@@ -11,7 +11,11 @@ function buy(key) {
     var item = items[key];
     var methodData = [
         {
-            supportedMethods: ["basic-card", "tommypay", "mastercard", "visa"],
+            supportedMethods: [
+                "basic-card", "mastercard", "visa",
+                "https://tommypay.no/pay",
+                "https://americanexpress.com/express-checkout"
+            ],
         }
     ]
     var details = {
