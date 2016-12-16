@@ -10,7 +10,7 @@ On this page, I will host prototype builds of the Chromium client, where we are 
 
 1. Download and install the client. The easiest way to do this is to navigate to this page with your mobile browser, and press [this link](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.apk).
 1. In the newly installed prototype client, navigate to chrome://flags, scroll down to the "Experimental Web Platform features" flag and enable it. Relaunch by pressing the button in the bottom of the screen.
-1. Install a Service Worker based Payment App. You can install the TommyPay test payment app by opening the newly installed prototype client, navigating to [The TommyPay home page](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/), and pressing the "Install Payment App" button.
+1. Install a Service Worker based Payment App. You can install the TommyPay test payment app by opening the newly installed prototype client, navigating to [The TommyPay home page](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/), and pressing the "Install Payment App" button. It should say "TommyPay successfully registered".
 1. Buy something by navigating to a page that supports Payment Request and the same Payment Methods as your installed Payment App provides, and buying something. [This page](https://tommythorsen.github.io/webpayments-demo/merchants/clothing/) works with the TommyPay payment app.
 
 ## Known issues
