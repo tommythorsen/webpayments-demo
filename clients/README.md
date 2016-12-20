@@ -4,6 +4,10 @@ On this page, I will host prototype builds of the Chromium client, where we are 
 
 ## Latest apk
 
+[Chromium-ServiceWorkerPaymentApps-v0.1.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.1.apk)
+
+## Previous versions
+
 [Chromium-ServiceWorkerPaymentApps-v0.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.apk)
 
 ## How to test the prototype client
