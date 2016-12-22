@@ -23,9 +23,11 @@
                     console.log("registering");
                     paymentView.textContent += "Registering TommyPay\n";
                     return registration.paymentAppManager.setManifest({
+                        name: "TommyPay",
                         label: "TommyPay",
                         options: [
                         {
+                            name: "Create new TommyPay account",
                             label: "Create new TommyPay account",
                             id: "new",
                             enabledMethods: [ "basic-card" ]
