@@ -6,6 +6,10 @@ On this page, I will host prototype builds of the Chromium client, where we are 
 
 [Chromium-ServiceWorkerPaymentApps-v0.1.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.1.apk)
 
+## Requirements
+
+These prototype builds require Android version 6 or higher.
+
 ## How to test the prototype client
 
 1. Download and install the client. The easiest way to do this is to navigate to this page with your mobile browser, and download the latest apk file listed above.
