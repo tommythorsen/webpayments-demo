@@ -27,4 +27,4 @@ TIP: console.log output and status information about your payment app can be vie
 ## Older apks
 
 * [Chromium-ServiceWorkerPaymentApps-v0.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.apk)
-  * This version requires that after install, you navigate to `chrome://flags`, scroll down to the "Experimental Web Platform features" flag and enable it. Relaunch by pressing the button in the bottom of the screen.
+ * This version requires that after install, you navigate to `chrome://flags`, scroll down to the "Experimental Web Platform features" flag and enable it. Relaunch by pressing the button in the bottom of the screen.
