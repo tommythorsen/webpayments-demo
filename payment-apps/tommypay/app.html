@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Install TommyPay</title>
+        <title>Pay with TommyPay</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
@@ -23,7 +23,10 @@
                 paymentButton.onclick = function() {
                     console.log("Page passing response back to SW");
                     event.source.postMessage({
-                        test: "test"
+                        methodName: "tommypay",
+                        details: {
+                            test: "test"
+                        }
                     });
                     window.close();
                 }
