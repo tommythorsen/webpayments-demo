@@ -26,6 +26,10 @@
                         methodName: "tommypay",
                         details: {
                             test: "test"
+                        },
+                        complete: function() {
+                            console.log("PaymentResponse.complete()");
+                            return Promise.resolve();
                         }
                     });
                     window.close();
