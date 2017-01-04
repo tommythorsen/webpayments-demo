@@ -4,10 +4,15 @@ self.addEventListener('paymentrequest', function(event) {
     console.log("PaymentRequest: " + JSON.stringify(event.data));
     event.respondWith(new Promise(function(resolve, reject) {
         self.addEventListener('message', function(event) {
-            console.log("PaymentResponse: " + JSON.stringify(event.data));
-            if (event.data) {
+            var response = event.data;
+            console.log("PaymentResponse: " + JSON.stringify(response));
+            if (response) {
+                response.complete = function() {
+                    console.log("PaymentResponse.complete()");
+                    return Promise.resolve();
+                }
                 try {
-                    resolve(event.data);
+                    resolve(response);
                 } catch(error) {
                     console.log(error);
                     reject(error);
