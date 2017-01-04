@@ -6,7 +6,12 @@ self.addEventListener('paymentrequest', function(event) {
         self.addEventListener('message', function(event) {
             console.log("PaymentResponse: " + JSON.stringify(event.data));
             if (event.data) {
-                resolve(event.data);
+                try {
+                    resolve(event.data);
+                } catch(error) {
+                    console.log(error);
+                    reject(error);
+                }
             } else {
                 reject();
             }
@@ -16,6 +21,7 @@ self.addEventListener('paymentrequest', function(event) {
             windowClient.postMessage(event.data);
         })
         .catch(function(error) {
+            console.log(error);
             reject(error);
         });
     }));
