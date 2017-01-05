@@ -23,7 +23,7 @@
                 paymentButton.onclick = function() {
                     console.log("Page passing response back to SW");
                     event.source.postMessage({
-                        methodName: "tommypay",
+                        methodName: "https://tommypay.no/pay",
                         details: {
                             test: "test"
                         }
