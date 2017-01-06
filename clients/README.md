@@ -4,7 +4,8 @@ On this page, I will host prototype builds of the Chromium client, where we are 
 
 ## Latest apk
 
-[Chromium-ServiceWorkerPaymentApps-v0.1.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.1.apk)
+[Chromium-ServiceWorkerPaymentApps-v0.2.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.2.apk)
+* There is a bug that causes the first transaction after installing this client not to work. Subsequent transactions seem to work, though, so I'm uploading this version, so that you can try it out while I'm tracking down the bug.
 
 ## Requirements
 
@@ -26,5 +27,6 @@ TIP: console.log output and status information about your payment app can be vie
 
 ## Older apks
 
+* [Chromium-ServiceWorkerPaymentApps-v0.1.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.1.apk)
 * [Chromium-ServiceWorkerPaymentApps-v0.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.apk)
  * This version requires that after install, you navigate to `chrome://flags`, scroll down to the "Experimental Web Platform features" flag and enable it. Relaunch by pressing the button in the bottom of the screen.
