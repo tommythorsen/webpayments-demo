@@ -4,7 +4,7 @@ On this page, I will host prototype builds of the Chromium client, where we are 
 
 ## Latest apk
 
-[Chromium-ServiceWorkerPaymentApps-v0.2.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.2.1.apk)
+[Chromium-ServiceWorkerPaymentApps-v0.2.2.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.2.2.apk)
 
 ## Requirements
 
@@ -25,6 +25,7 @@ TIP: console.log output and status information about your payment app can be vie
 
 ## Older apks
 
+* [Chromium-ServiceWorkerPaymentApps-v0.2.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.2.1.apk)
 * [Chromium-ServiceWorkerPaymentApps-v0.2.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.2.apk)
  * This version was buggy and transactions would intermittently not work. v0.2.1 should work better.
 * [Chromium-ServiceWorkerPaymentApps-v0.1.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.1.1.apk)
