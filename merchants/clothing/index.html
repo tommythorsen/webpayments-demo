@@ -41,6 +41,21 @@ function buy(key) {
                 label: "Express shipping",
                 amount: { currency: "USD", value: "5.00" }
             }
+        ],
+        modifiers: [
+            {
+                supportedMethods: [ "https://tommypay.no/pay" ],
+                total: {
+                    label: "Total (with TommyPay discount)",
+                    amount: { currency: "USD", value: item.price - 1 }
+                },
+                additionalDisplayItems: [
+                    {
+                        label: "TommyPay discount",
+                        amount: { currency: "USD", value: "-1" }
+                    }
+                ]
+            }
         ]
     }
     var options = {
