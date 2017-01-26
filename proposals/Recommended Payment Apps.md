@@ -60,3 +60,14 @@ Instead, we should give the user an opportunity to install a payment app and con
 If the browser is able to show one or more payment apps that are recommended by the merchant, the user experience could look something like this:
 
 ![Wireframe showing a payment request dialog with a recommended payment app](recommended3.png)
+
+The UI element for the recommended payment app consists of an icon, a label and the url which was provided in the payment request above. Earlier proposals have allowed the merchant to provide the remaining information (icon and label), but based on recent discussions (for instance in [issue #48](https://github.com/w3c/webpayments-payment-apps-api/issues/48)), I propose that the merchant only provides a url that points to a web page which is capable of installing a recommended payment app. The icon and label should be fetched from resource pointed to by this url. This can be done by means of [Link Headers](https://www.w3.org/wiki/LinkHeader), or by downloading and parsing the whole web page, looking through the html for the information we need.
+
+
+## 4. Installing the payment app
+
+If the user would like to continue the payment by installing TommyPay, and clicks the TommyPay element in the screen above, we open https://tommypay.no/signup inside the payment request UI. This might look something like:
+
+![Wireframe showing a payment request dialog containing the TommyPay signup form](recommended4.png)
+
+To be continued...
