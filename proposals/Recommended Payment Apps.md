@@ -11,7 +11,7 @@ Let's start with the user perusing the merchant's web site:
 
 ![Wireframe showing a browser opened at the merchant's web site](recommended1.png)
 
-Being in dire need of more stuff, the user clicks the "buy" button, triggering the following javascript code:
+Being in dire need of more stuff, the user clicks the "Buy all of the stuff" button, triggering the following javascript code:
 
 ```javascript
 var methodData = [
@@ -61,13 +61,60 @@ If the browser is able to show one or more payment apps that are recommended by 
 
 ![Wireframe showing a payment request dialog with a recommended payment app](recommended3.png)
 
-The UI element for the recommended payment app consists of an icon, a label and the url which was provided in the payment request above. Earlier proposals have allowed the merchant to provide the remaining information (icon and label), but based on recent discussions (for instance in [issue #48](https://github.com/w3c/webpayments-payment-apps-api/issues/48)), I propose that the merchant only provides a url that points to a web page which is capable of installing a recommended payment app. The icon and label should be fetched from resource pointed to by this url. This can be done by means of [Link Headers](https://www.w3.org/wiki/LinkHeader), or by downloading and parsing the whole web page, looking through the html for the information we need.
+The UI element for the recommended payment app consists of an icon, a label and the url which was provided in the payment request above. Earlier proposals have allowed the merchant to provide the remaining information (icon and label), but based on recent discussions (for instance in [issue #48](https://github.com/w3c/webpayments-payment-apps-api/issues/48)), I propose that the merchant only provides a url that points to a web page which is capable of installing a recommended payment app. The icon and label should be fetched from the resource pointed to by this url. This can be done by means of [Link Headers](https://www.w3.org/wiki/LinkHeader), or by downloading and parsing the whole web page, looking through the html for the information we need. If using link headers, it might be possible to get the icon and label directly, or it is possible to go through an intermediate step in the form of a manifest file.
 
 
 ## 4. Installing the payment app
 
-If the user would like to continue the payment by installing TommyPay, and clicks the TommyPay element in the screen above, we open https://tommypay.no/signup inside the payment request UI. This might look something like:
+If the user would like to continue the payment by installing TommyPay, and clicks the TommyPay element in the screen above, we load the web page https://tommypay.no/signup inside the payment request dialog. This might look something like:
 
 ![Wireframe showing a payment request dialog containing the TommyPay signup form](recommended4.png)
 
-To be continued...
+After the user fills in all the required information in the TommyPay registration form, and presses "Submit", a service worker will be installed to handle the https://tommypay.no/pay payment method.
+
+```javascript
+navigator.serviceWorker.register("./app.js")
+.then(function(registration) {
+    return registration.paymentAppManager.setManifest({
+        name: "TommyPay",
+        icons: [
+            {
+                src: "icon.png",
+                sizes: "48x48",
+            } ],
+        options: [
+            {
+                id: "card-1234",
+                name: "Credit card ending with 1234",
+                icons: [
+                    {
+                        src: "card.png",
+                        sizes: "48x48",
+                    } ],
+                enabledMethods: [ "https://tommypay.no/pay" ]
+            } ]
+    });
+}).then(function() {
+    console.log("successfully registered");
+    window.close();
+}).catch(function(error) {
+    console.log("registration error: " + error);
+    window.close();
+});
+```
+
+
+## Ready to pay some money
+
+After installing the payment app, and closing the signup web page, we're back in the regular payment request dialog, but now we have an installed payment app that can handle the current payment request. All the user has to do now, is click the "Pay" button.
+
+![Wireframe showing a payment request dialog containing the newly registered payment method](recommended5.png)
+
+Clicking the "Pay" button causes a [PaymentAppRequest](https://w3c.github.io/webpayments-payment-apps-api/#sec-app-request) to be passed in a payment request event to the service worker we just registered above. In many cases, the payment app might choose to show some UI here, for instance, in order to verify the card's three-digit control code. However, for the sake of simplicity, let's assume it immediately responds with a [PaymentAppResponse](https://w3c.github.io/webpayments-payment-apps-api/#sec-app-response), which again is used to construct a `PaymentResponse` which is passed back to the merchant.
+
+
+## Done
+
+![Wireframe showing the merchant receipt page](recommended6.png)
+
+And we're done.
