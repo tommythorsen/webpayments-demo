@@ -113,8 +113,8 @@ After installing the payment app, and closing the signup web page, we're back in
 Clicking the "Pay" button causes a [PaymentAppRequest](https://w3c.github.io/webpayments-payment-apps-api/#sec-app-request) to be passed in a payment request event to the service worker we just registered above. In many cases, the payment app might choose to show some UI here, for instance, in order to verify the card's three-digit control code. However, for the sake of simplicity, let's assume it immediately responds with a [PaymentAppResponse](https://w3c.github.io/webpayments-payment-apps-api/#sec-app-response), which again is used to construct a `PaymentResponse` which is passed back to the merchant.
 
 
-## Done
+## Done!
 
 ![Wireframe showing the merchant receipt page](recommended6.png)
 
-And we're done.
+The customer gets his stuff, the merchant gets his money, and so does presumably the payment provider. Everyone's happy :)
