@@ -4,7 +4,7 @@ On this page, I will host prototype builds of the Chromium client, where we are 
 
 ## Latest apk
 
-[Chromium-ServiceWorkerPaymentApps-v0.3.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.3.apk)
+[Chromium-ServiceWorkerPaymentApps-v0.4.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.4.apk)
 
 ## Requirements
 
@@ -20,11 +20,12 @@ TIP: console.log output and status information about your payment app can be vie
 
 ## Known issues
 
-* Payment details modifiers are not passed to the service worker. The payment request event that the service worker receives, contains the following fields: "origin", "methodData", "total" and "optionId". There is useful and relevant data in the PaymentDetailsModifier dictionaries, too, but this isn't passed to the Payment App yet. This will be sorted out in a later release.
 * Icons in the manifest are not parsed at all. The specification is currently not clear on how to express icons in the manifests. We are leaning towards doing the same as the AppManifest specification. See https://github.com/w3c/webpayments-payment-apps-api/issues/69
 
 ## Older apks
 
+* [Chromium-ServiceWorkerPaymentApps-v0.3.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.3.apk)
+ * In this version (and previous versions), payment details modifiers were not passed to the service worker.
 * [Chromium-ServiceWorkerPaymentApps-v0.2.2.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.2.2.apk)
 * [Chromium-ServiceWorkerPaymentApps-v0.2.1.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.2.1.apk)
 * [Chromium-ServiceWorkerPaymentApps-v0.2.apk](https://tommythorsen.github.io/webpayments-demo/clients/Chromium-ServiceWorkerPaymentApps-v0.2.apk)
