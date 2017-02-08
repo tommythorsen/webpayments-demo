@@ -11,10 +11,10 @@
             <div class="separator"></div>
 
             <div class="message">
-                <input class="textinput" type="text" id="name" />
+                <input class="textinput" style="text-transform: capitalize" type="text" id="name" />
                 <p>name</p>
 
-                <input style="margin-top: 5px" class="textinput" type="text" id="number" />
+                <input class="textinput" type="number" id="number" />
                 <p>card number</p>
             </div>
 
@@ -47,8 +47,9 @@
                     });
                 }).then(function() {
                     console.log("registered");
+                    location.href = "confirmation.html";
                 }).catch(function(error) {
-                    console.log("error: " + error);
+                    alert("error: " + error);
                 });
             }
         </script>
