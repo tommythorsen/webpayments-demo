@@ -1,0 +1,64 @@
+body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+}
+
+.content {
+    color: white;
+    position: relative;
+    height: 66vw;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.separator {
+    background: rgba(255, 255, 255, 0.7);
+    height: 1px;
+}
+
+.message {
+    display: block;
+    width: 350px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.textinput {
+    display: block;
+    width: 350px;
+    background: transparent;
+    outline: none;
+    border-style: solid;
+    border: none;
+    border-bottom: solid #ffffff;
+    font-size: 200%;
+    color: white;
+}
+
+.button {
+    text-decoration: none;
+    background: #aaaaff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: white;
+    display: block;
+    text-align: center;
+    width: 150px;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    margin: 10px;
+}

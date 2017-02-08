@@ -1,46 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Install TommyPay</title>
+        <title>TommyPay</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="files/style.css"/>
     </head>
     <body>
-        <h2>Install TommyPay</h2>
-        <p><i>A very primitive payment app that shows the entire payment request passed
-            to it as JSON.</i></p>
+        <div class="content" style="background-image: url(files/cashbox.jpg)">
+            <h1>TommyPay</h1>
+            <div class="separator"></div>
+            <h2 class="message">The safe way to make payments on the web!</h2>
+            <a class="button" href="signup/index.html">Sign up for TommyPay</a>
+        </div>
 
-        <pre id="paymentView"></pre>
-
-        <button id="install" onclick="install()">Install Payment App</button>
-
-        <script>
-            var paymentView = document.getElementById("paymentView");
-
-            function install() {
-                console.log("install()");
-                navigator.serviceWorker.register("./app.js")
-                .then(function(registration) {
-                    console.log("registering");
-                    paymentView.textContent += "Registering TommyPay\n";
-                    return registration.paymentAppManager.setManifest({
-                        name: "TommyPay",
-                        label: "TommyPay",
-                        options: [
-                        {
-                            name: "Pay with new TommyPay account",
-                            label: "Pay with new TommyPay account",
-                            id: "new",
-                            enabledMethods: [ "https://tommypay.no/pay" ]
-                        }]
-                    });
-                }).then(function() {
-                    console.log("registered");
-                    paymentView.textContent += "TommyPay successfully registered\n";
-                }).catch(function(error) {
-                    paymentView.textContent += error + "\n";
-                });
-            }
-        </script>
+        <div class="footer">
+            <p>&copy; 2017 TommyPay</p>
+        </div>
     </body>
 </html>
 

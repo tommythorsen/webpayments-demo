@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign up for TommyPay</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../files/style.css"/>
+    </head>
+    <body>
+        <div class="content" style="background-image: url(../files/wood.png)">
+            <h1>Sign up for TommyPay</h1>
+            <div class="separator"></div>
+
+            <div class="message">
+                <p>name:</p>
+                <input class="textinput" type="text" id="name" />
+
+                <p>card number:</p>
+                <input class="textinput" type="text" id="number" />
+            </div>
+
+            <a class="button" onclick="install()" href="#">Install the TommyPay Payment App</a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2017 TommyPay</p>
+        </div>
+
+        <script>
+            var nameField = document.getElementById("name");
+            var numberField = document.getElementById("number");
+
+            function install() {
+                var optionName = "Card ending in " + numberField.value.substr(-4);
+                console.log("install \"" + optionName + "\"");
+                navigator.serviceWorker.register("../pay/app.js")
+                .then(function(registration) {
+                    return registration.paymentAppManager.setManifest({
+                        name: "TommyPay",
+                        label: "TommyPay",
+                        options: [
+                        {
+                            name: optionName,
+                            label: optionName,
+                            id: numberField.value.substr(-4),
+                            enabledMethods: [ "https://tommypay.no/pay" ]
+                        }]
+                    });
+                }).then(function() {
+                    console.log("registered");
+                }).catch(function(error) {
+                    console.log("error: " + error);
+                });
+            }
+        </script>
+    </body>
+</html>
