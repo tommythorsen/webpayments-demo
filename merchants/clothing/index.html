@@ -15,7 +15,8 @@ function buy(key) {
                 "basic-card", "mastercard", "visa",
                 "https://tommypay.no/pay",
                 "https://americanexpress.com/express-checkout",
-                "https://rsolomakhin.github.io/bobpay"
+                "https://rsolomakhin.github.io/bobpay",
+                "https://interledger.org/webpayments/spsp"
             ],
         }
     ]
@@ -44,17 +45,22 @@ function buy(key) {
         ],
         modifiers: [
             {
-                supportedMethods: [ "https://tommypay.no/pay" ],
+                supportedMethods: [ "https://interledger.org/webpayments/spsp" ],
                 total: {
-                    label: "Total (with TommyPay discount)",
+                    label: "Total (with ILP discount)",
                     amount: { currency: "USD", value: item.price - 1 }
                 },
                 additionalDisplayItems: [
                     {
-                        label: "TommyPay discount",
+                        label: "ILP discount",
                         amount: { currency: "USD", value: "-1" }
                     }
-                ]
+                ],
+                data: {
+                    "address": "ilpdemo.red.bob.b9c4ceba-51e4-4a80-b1a7-2972383e98af",
+                    "condition": "cc:0:3:hd5x8kpaDDLQu-KqMyCrlsg5QJ9g9qaFr9ytTwqyCsw:32",
+                    "expires_at": "2016-08-16T12:00:00Z"
+                }
             }
         ]
     }
