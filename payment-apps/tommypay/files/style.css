@@ -4,6 +4,10 @@ body {
     padding: 0;
 }
 
+p {
+    margin: 0;
+}
+
 .title {
     width: 100%;
     margin: 0;
@@ -25,21 +29,21 @@ body {
 
 .message {
     display: block;
-    width: 350px;
+    width: 70vw;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .textinput {
     display: block;
-    width: 350px;
+    width: 70vw;
     background: transparent;
     outline: none;
-    border-style: solid;
     border: none;
     border-bottom: solid #ffffff;
-    font-size: 200%;
+    border-width: 1px;
     color: white;
+    font-size: 100%;
 }
 
 .button {
@@ -52,7 +56,7 @@ body {
     text-align: center;
     width: 200px;
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 0;
     right: 0;
     margin-left: auto;
