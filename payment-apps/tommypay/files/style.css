@@ -4,7 +4,7 @@ body {
     padding: 0;
 }
 
-h1 {
+.title {
     width: 100%;
     margin: 0;
     padding: 10px;
@@ -27,7 +27,7 @@ h1 {
     display: block;
     width: 350px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .textinput {
@@ -52,7 +52,7 @@ h1 {
     text-align: center;
     width: 150px;
     position: absolute;
-    bottom: 40px;
+    bottom: 20px;
     left: 0;
     right: 0;
     margin-left: auto;
