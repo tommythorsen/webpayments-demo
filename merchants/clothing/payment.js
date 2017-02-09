@@ -145,7 +145,6 @@ function buyWithCreditCard(key) {
 }
 
 if (getQueryParam("buyWithTommyPay")) {
-    window.location.replace(window.location.href.substring(-window.location.search.lenth));
     buyWithTommyPay(getQueryParam("buyWithTommyPay"));
 }
 
