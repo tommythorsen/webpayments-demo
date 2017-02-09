@@ -5,6 +5,15 @@ var options = {
     requestShipping: true
 }
 
+function getQueryParam(name) {
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(window.location.href);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 function createDetails(item) {
     var details = {
         total: {
@@ -78,7 +87,7 @@ function buy(item, methodData, notSupportedCallback) {
             console.log("  payer email: " + paymentResponse.payerEmail);
             console.log("  payer phone: " + paymentResponse.payerPhone);
             if (paymentResponse) {
-                window.location.href = "receipt.html?id=" + key;
+                window.location.href = "receipt.html?key=" + key;
             }
         })
         .catch(function(error) {
@@ -104,7 +113,7 @@ function buyWithTommyPay(key) {
     buy(item, methodData, function(error) {
         window.location.href =
             "https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/?redirect_url=" +
-            encodeURI(window.location.href);
+            encodeURI(window.location.href) + "&action=buyWithTommyPay";
     });
 }
 
@@ -129,3 +138,8 @@ function buyWithCreditCard(key) {
 
     buy(item, methodData);
 }
+
+if (getQueryParam("action") == "buyWithTommyPay") {
+    buyWithTommyPay(getQueryParam("key"));
+}
+
