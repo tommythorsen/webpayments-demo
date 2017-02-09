@@ -57,10 +57,12 @@
                 }).then(function() {
                     console.log("registered");
                     var redirect_url = getQueryParam("redirect_url");
+                    console.log("window.location.href = " + window.location.href);
+                    console.log("redirect_url = " + redirect_url);
                     if (redirect_url) {
-                        window.location = redirect_url;
+                        window.location.href = redirect_url;
                     } else {
-                        window.location = "confirmation.html";
+                        window.location.href = "confirmation.html";
                     }
                 }).catch(function(error) {
                     alert("error: " + error);
