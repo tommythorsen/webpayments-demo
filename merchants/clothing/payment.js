@@ -8,7 +8,7 @@ var options = {
 function getQueryParam(name) {
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
-    results = regex.exec(window.location.href);
+    results = regex.exec(window.location.search);
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
@@ -111,6 +111,7 @@ function buyWithTommyPay(key) {
     ];
 
     buy(item, methodData, function(error) {
+        consol.log("buyWithTommyPay error=" + error);
         var redirectUrl = window.location.href;
         redirectUrl += redirectUrl.indexOf('?') == -1 ? '?' : '&';
         redirectUrl += "buyWithTommyPay=" + key;
@@ -144,6 +145,7 @@ function buyWithCreditCard(key) {
 }
 
 if (getQueryParam("buyWithTommyPay")) {
+    window.location.replace(window.location.href.substring(-window.location.search.lenth));
     buyWithTommyPay(getQueryParam("buyWithTommyPay"));
 }
 
