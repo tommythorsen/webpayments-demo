@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Honest Tommy's clothing webshop</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css"/>
+        <script src="inventory.js"></script>
+        <script src="payment.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Honest Tommy's clothing webshop</h1>
+        </header>
+        <div id="item"></div>
+        <footer>
+            <a href="http://www.freepik.com/free-photos-vectors/design">
+                This page uses free images from Freepik
+            </a>
+        </footer>
+        <p style="clear: left; margin: 10px">
+            <a href="index.html">Continue shopping</a>
+        </p>
+        <script>
+            var key = location.search.substring(4);
+            console.log("KEY: " + key);
+            var div = document.getElementById("item");
+            var item = items[key];
+            div.innerHTML +=
+                '<img class="itemimage" src="' + item.picture + '"/>' +
+                '<div style="margin: 10px">' +
+                '<p>' + item.name + '</p>' +
+                '<p>$' + item.price + '</p>' +
+                '<button onclick="buyWithTommyPay(\'' + key + '\')">Buy with TommyPay</button><br>' +
+                '<button onclick="buyWithBobPay(\'' + key + '\')">By with BobPay</button><br>' +
+                '<button onclick="buyWithCreditCard(\'' + key + '\')">Buy with credit card</button>' +
+                '</div>';
+        </script>
+    </body>
+</html>
