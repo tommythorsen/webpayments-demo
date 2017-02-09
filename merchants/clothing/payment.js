@@ -50,6 +50,7 @@ function createDetails(item) {
 
 function buy(item, methodData, notSupportedCallback) {
     try {
+        var details = createDetails(item);
         var request = new PaymentRequest(methodData, details, options);
         request.addEventListener("shippingaddresschange", function(evt) {
             console.log("shipping address changed");
