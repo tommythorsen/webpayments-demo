@@ -111,9 +111,13 @@ function buyWithTommyPay(key) {
     ];
 
     buy(item, methodData, function(error) {
+        var redirectUrl = window.location.href;
+        redirectUrl += redirectUrl.indexOf('?') == -1 ? '?' : '&';
+        redirectUrl += "action=buyWithTommyPay";
+
         window.location.href =
             "https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/?redirect_url=" +
-            encodeURI(window.location.href) + "&action=buyWithTommyPay";
+            encodeURI(redirectUrl);
     });
 }
 

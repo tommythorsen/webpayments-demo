@@ -55,12 +55,8 @@
                         }]
                     });
                 }).then(function() {
-                    var redirect_url = getQueryParam("redirect_url");
-                    if (redirect_url) {
-                        window.location.href = redirect_url;
-                    } else {
-                        window.location.href = "confirmation.html";
-                    }
+                    var redirectUrl = getQueryParam("redirect_url");
+                    window.location.href = redirectUrl ? redirectUrl : "confirmation.html";
                 }).catch(function(error) {
                     alert("error: " + error);
                 });
