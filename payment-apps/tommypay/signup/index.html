@@ -58,9 +58,9 @@
                     console.log("registered");
                     var redirect_url = getQueryParam("redirect_url");
                     if (redirect_url) {
-                        location.href = redirect_url;
+                        window.location = redirect_url;
                     } else {
-                        location.href = "confirmation.html";
+                        window.location = "confirmation.html";
                     }
                 }).catch(function(error) {
                     alert("error: " + error);

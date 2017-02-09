@@ -78,7 +78,7 @@ function buy(item, methodData, notSupportedCallback) {
             console.log("  payer email: " + paymentResponse.payerEmail);
             console.log("  payer phone: " + paymentResponse.payerPhone);
             if (paymentResponse) {
-                location.href = "receipt.html?id=" + key;
+                window.location = "receipt.html?id=" + key;
             }
         })
         .catch(function(error) {
@@ -102,7 +102,7 @@ function buyWithTommyPay(key) {
     ];
 
     buy(item, methodData, function(error) {
-        location.href =
+        window.location =
             "https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/?redirect_url=" +
             encodeURI(location.href);
     });
