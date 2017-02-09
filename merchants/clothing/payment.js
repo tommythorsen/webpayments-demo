@@ -143,6 +143,7 @@ function buyWithCreditCard(key) {
     buy(item, methodData);
 }
 
+console.log(window.location.href);
 if (getQueryParam("action") == "buyWithTommyPay") {
     buyWithTommyPay(getQueryParam("key"));
 }
