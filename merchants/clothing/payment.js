@@ -102,7 +102,9 @@ function buyWithTommyPay(key) {
     ];
 
     buy(item, methodData, function(error) {
-        location.href = "https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/";
+        location.href =
+            "https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/?redirect_url=" +
+            encodeURI(location.href);
     });
 }
 

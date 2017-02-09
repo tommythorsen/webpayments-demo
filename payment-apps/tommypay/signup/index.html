@@ -29,6 +29,15 @@
             var nameField = document.getElementById("name");
             var numberField = document.getElementById("number");
 
+            function getQueryParam(name) {
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.href);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+
             function install() {
                 var optionName = "Card ending in " + numberField.value.substr(-4);
                 console.log("install \"" + optionName + "\"");
@@ -47,7 +56,12 @@
                     });
                 }).then(function() {
                     console.log("registered");
-                    location.href = "confirmation.html";
+                    var redirect_url = getQueryParam("redirect_url");
+                    if (redirect_url) {
+                        location.href = redirect_url;
+                    } else {
+                        location.href = "confirmation.html";
+                    }
                 }).catch(function(error) {
                     alert("error: " + error);
                 });
