@@ -112,13 +112,14 @@ function buyWithTommyPay(key) {
 
     buy(item, methodData, function(error) {
         console.log("buyWithTommyPay error=" + error);
-        var redirectUrl = window.location.href;
-        redirectUrl += redirectUrl.indexOf('?') == -1 ? '?' : '&';
-        redirectUrl += "buyWithTommyPay=" + key;
-
-        window.location.href =
-            "https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/?redirect_url=" +
-            encodeURI(redirectUrl);
+        if (error.code == DOMException.NOT_SUPPORTED_ERR) {
+            var redirectUrl = window.location.href;
+            redirectUrl += redirectUrl.indexOf('?') == -1 ? '?' : '&';
+            redirectUrl += "buyWithTommyPay=" + key;
+            window.location.href =
+                "https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/?redirect_url=" +
+                encodeURI(redirectUrl);
+        }
     });
 }
 
