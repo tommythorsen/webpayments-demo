@@ -113,6 +113,9 @@ function buyWithTommyPay(key) {
     buy(item, methodData, function(error) {
         console.log("buyWithTommyPay error=" + error);
         if (error.code == DOMException.NOT_SUPPORTED_ERR) {
+            if (getQueryParam("buyWithTommyPay")) {
+                return;
+            }
             var redirectUrl = window.location.href;
             redirectUrl += redirectUrl.indexOf('?') == -1 ? '?' : '&';
             redirectUrl += "buyWithTommyPay=" + key;
