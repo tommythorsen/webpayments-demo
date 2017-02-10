@@ -13,7 +13,7 @@ These prototype builds require Android version 6 or higher.
 ## How to test the prototype client
 
 1. Download and install the client. The easiest way to do this is to navigate to this page with your mobile browser, and download the latest apk file listed above.
-1. [Optional] Install a Service Worker based Payment App. You can install the TommyPay test payment app by opening the newly installed prototype client and navigating to [The TommyPay signup page](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/).
+1. [Optional] Install a Service Worker based Payment App. This step may not be necessary for all merchants. The test merchant in the step below, for instance, will detect that you have no matching payment app, and send you to the [The TommyPay signup page](https://tommythorsen.github.io/webpayments-demo/payment-apps/tommypay/signup/) automatically.
 1. Navigate to a page that supports Payment Request and the same Payment Methods as your installed Payment App provides, and buy something. [This page](https://tommythorsen.github.io/webpayments-demo/merchants/clothing/) works with the TommyPay payment app.
 
 TIP: console.log output and status information about your payment app can be viewed in `chrome://serviceworker-internals`.
