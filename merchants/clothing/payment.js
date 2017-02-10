@@ -91,6 +91,7 @@ function buy(item, methodData, notSupportedCallback) {
             }
         })
         .catch(function(error) {
+            console.log("show() error: " + error);
             if (notSupportedCallback) {
                 notSupportedCallback(error);
             } else {
@@ -111,7 +112,6 @@ function buyWithTommyPay(key) {
     ];
 
     buy(item, methodData, function(error) {
-        console.log("buyWithTommyPay error=" + error);
         if (error.code == DOMException.NOT_SUPPORTED_ERR) {
             if (getQueryParam("buyWithTommyPay")) {
                 return;
