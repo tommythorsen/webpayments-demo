@@ -22,7 +22,7 @@
             <a href="index.html">Continue shopping</a>
         </p>
         <script>
-            var key = location.search.substring(4);
+            var key = getQueryParam("key");
             console.log("KEY: " + key);
             var div = document.getElementById("item");
             var item = items[key];
