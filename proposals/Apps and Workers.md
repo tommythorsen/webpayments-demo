@@ -50,7 +50,7 @@ This algorithm should be run by the Browser while installing the Payment Service
 
 ### Algorithm that is run on PaymentRequest.show()
 
-This algorithm is run by the browser in order to find all the Payment Apps and corresponding Payment Options that can handle a Payment Request.
+This algorithm is run by the Browser in order to find all the Payment Apps and corresponding Payment Options that can handle a Payment Request.
 
 1. Let `matchingAppsAndOptions` be a new empty map where the keys are Web App Manifest URLs and the values are sequences of PaymentOption instances.
 1. For each `serviceWorker` in the set of all installed Service Workers, do:
