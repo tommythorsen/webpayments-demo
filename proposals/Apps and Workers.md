@@ -28,7 +28,7 @@ These two Web Apps are in the same folder, and have the exact same scope, which 
 
 #### *"Service workers can be identified by scope"*
 
-This one has been an accepted truth in the Working Group for some time, but after reading the [Service Workers specification](https://w3c.github.io/ServiceWorker/), I have come to believe that this is not true. Nowhere in the specification does it say that the scope of the Service Worker has to be unique. The Service Worker does however have a unique `id` field. Even though current implementations may only allow for one Service Worker per scope, [this issue](https://github.com/w3c/ServiceWorker/issues/921) leads me to think that we should assume this will always be the case.
+This one has been an accepted truth in the Working Group for some time, but after reading the [Service Workers specification](https://w3c.github.io/ServiceWorker/), I have come to believe that this is not true. Nowhere in the specification does it say that the scope of the Service Worker has to be unique. The Service Worker does however have a unique `id` field. Even though current implementations may only allow for one Service Worker per scope, [this issue](https://github.com/w3c/ServiceWorker/issues/921) leads me to think that we should not assume this will always be the case.
 
 
 ## Payment App - Service Worker matching proposal
