@@ -35,6 +35,9 @@ This one has been an accepted truth in the Working Group for some time, but afte
 
 Given all of the limitations above, how can we realistically match our Service Workers to the right Payment Apps? Since we cannot rely on the scopes or paths of either the Payment Apps or the Service Workers, it does not seem possible to deduce these relationships by statically looking at already installed apps and workers. The only chance we have to establish these relationships is at installation time. The proposal below suggests looking at the current [application context](https://w3c.github.io/manifest/#dfn-application-context) while installing a payment-enabled Service Worker, and storing an identifier for the Payment App in the Service Worker for later lookup. I propose that the identifier for the Payment App should be the url of the Web App Manifest file, as this is the only guaranteed unique property of a Web App.
 
+The following pseudo code currently uses some of the concepts that are in the specification, but does not actually make a lot of sense for the new way of thinking about Payment Apps as Web Apps. The `PaymentAppManifest` interface is an example of something that should be replaced with something new, or at least renamed. Please try to not get too hung up about these minor details, when reviewing the pseudo code below. The general approach should still work, even if we rearrange the Payment Apps spec a bit.
+
+
 ### Pseudo code that is run on Service Worker installation
 
 This code should be run by the Browser while installing the Payment Service worker. The implementation of `PaymentAppManager.setManifest()` (or equivalent function, in case this is replaced by something else) would be a good place to do this.
@@ -43,6 +46,7 @@ This code should be run by the Browser while installing the Payment Service work
 1. If the [top-level browsing context](https://w3c.github.io/manifest/#dfn-top-level-browsing-context) does not have a manifest applied to it, throw some error and terminate these steps.
 1. Let `manifestUrl` be the URL of the manifest that has been applied to the [top-level browsing context](https://w3c.github.io/manifest/#dfn-top-level-browsing-context).
 1. Set the value of a new internal slot `paymentAppManifest.[[manifestUrl]]` to `manifestUrl`.
+
 
 ### Pseudo code that is run on PaymentRequest.show()
 
