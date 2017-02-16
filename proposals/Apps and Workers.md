@@ -52,11 +52,11 @@ This code is run by the browser in order to find all the Payment Apps and corres
 1. For each `serviceWorker` in the set of all installed Service Workers, do:
   1. If no Payment Options have been registered from this Service Worker, move onto the next item.
   1. For each `paymentOption` in the set of Payment Options registered from this Service Worker, do:
-    1. If `paymentOption` does not [match](https://w3c.github.io/webpayments-payment-apps-api/#matching) the current Payment Request, move onto the next item.
+    1. If `paymentOption` does not [match](https://w3c.github.io/webpayments-payment-apps-api/#matching) the current Payment Request, move onto the next item.
     1. Let `paymentAppManifest` be the `PaymentAppManifest` associated with `paymentOption`.
-    1. Let `manifestUrl` be the value of `paymentAppManifest.[[manifestUrl]]`.
-    1. If `manifestUrl` does not exist as a key in `matchingAppsAndOptions`, do:
-      1. Create a new empty sequence, and add it to `matchingAppsAndOptions`, for the key `manifestUrl`.
-    1. Let `optionSequence` be the sequence that corresponds to the key `manifestUrl` in `matchingAppsAndOptions`.
-    1. Append `paymentOption` to `optionSequence`
+    1. Let `manifestUrl` be the value of `paymentAppManifest.[[manifestUrl]]`.
+    1. If `manifestUrl` does not exist as a key in `matchingAppsAndOptions`, do:
+      1. Create a new empty sequence, and add it to `matchingAppsAndOptions`, for the key `manifestUrl`.
+    1. Let `optionSequence` be the sequence that corresponds to the key `manifestUrl` in `matchingAppsAndOptions`.
+    1. Append `paymentOption` to `optionSequence`
 1. The `matchingAppsAndOptions` map now contains all matching Payment Apps (represented by URLs to Web App Manifest files), and Payment Options. This map can be handed to the UI, which can display some or all of this information.
