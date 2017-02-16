@@ -39,10 +39,24 @@ Given all of the limitations above, how can we realistically match our Service W
 
 This code should be run by the Browser while installing the Payment Service worker. The implementation of `PaymentAppManager.setManifest()` (or equivalent function, in case this is replaced by something else) would be a good place to do this.
 
+1. Let `paymentAppManifest` be the `PaymentAppManifest` instance that is currently being registered.
 1. If the [top-level browsing context](https://w3c.github.io/manifest/#dfn-top-level-browsing-context) does not have a manifest applied to it, throw some error and terminate these steps.
-2. Let `manifestUrl` be the URL of the manifest that has been applied to the [top-level browsing context](https://w3c.github.io/manifest/#dfn-top-level-browsing-context).
-3. Set the value of a new internal slot [[manifestUrl]] in the `PaymentAppManifest` interface to `manifestUrl`.
+1. Let `manifestUrl` be the URL of the manifest that has been applied to the [top-level browsing context](https://w3c.github.io/manifest/#dfn-top-level-browsing-context).
+1. Set the value of a new internal slot `paymentAppManifest.[[manifestUrl]]` to `manifestUrl`.
 
 ### Pseudo code that is run on PaymentRequest.show()
 
 This code is run by the browser in order to find all the Payment Apps and corresponding Payment Options that can handle a Payment Request.
+
+1. Let `matchingAppsAndOptions` be a new empty map where the keys are Web App Manifest URLs and the values are sequences of PaymentOption instances.
+1. For each `serviceWorker` in the set of all installed Service Workers, do:
+  1. If no Payment Options have been registered from this Service Worker, move onto the next item.
+  1. For each `paymentOption` in the set of Payment Options registered from this Service Worker, do:
+    1. If `paymentOption` does not [match](https://w3c.github.io/webpayments-payment-apps-api/#matching) the current Payment Request, move onto the next item.
+    1. Let `paymentAppManifest` be the `PaymentAppManifest` associated with `paymentOption`.
+    1. Let `manifestUrl` be the value of `paymentAppManifest.[[manifestUrl]]`.
+    1. If `manifestUrl` does not exist as a key in `matchingAppsAndOptions`, do:
+      1. Create a new empty sequence, and add it to `matchingAppsAndOptions`, for the key `manifestUrl`.
+    1. Let `optionSequence` be the sequence that corresponds to the key `manifestUrl` in `matchingAppsAndOptions`.
+    1. Append `paymentOption` to `optionSequence`
+1. The `matchingAppsAndOptions` map now contains all matching Payment Apps (represented by URLs to Web App Manifest files), and Payment Options. This map can be handed to the UI, which can display some or all of this information.
