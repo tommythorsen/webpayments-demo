@@ -1,5 +1,7 @@
 # Payment Apps and Service Workers -- 2nd attempt
 
+*(This proposal deprecates the [previous proposal](Apps%20and%20Workers.md))*
+
 After discussing with the Working Group (and with Adam Roach in particular, in issue [#104](https://github.com/w3c/webpayments-payment-apps-api/pull/104)), it seems clear that we do not want to require a Payment App Manifest for a Payment App. We will pick the names and icons we need out of the top-level browsing context -- from an applied manifest if there is one -- or from the Document's metadata if no manifest has been applied.
 
 The advantage of this approach, is that the Payment App API will have less dependencies, and arguably be easier to use.
