@@ -73,32 +73,34 @@ This algorithm describes how to use the registered payment information for each 
     <button onclick="install_payment_app()">Install Payment App</button>
     ...
     <script>
-      navigator.serviceWorker.register("worker.js")
-      .then(function(registration) {
-        registration.paymentAppManager.options.set(
-          "4e05bb9d-fe26-415b-9cc3-ee2fc3877315",
-          {
-            name: "Visa Cash Rewards ending 3701",
-            enabledMethods: ["basic-card"]
-          }
-        );
+      function install_payment_app() {
+        navigator.serviceWorker.register("worker.js")
+        .then(function(registration) {
+          registration.paymentAppManager.options.set(
+            "4e05bb9d-fe26-415b-9cc3-ee2fc3877315",
+            {
+              name: "Visa Cash Rewards ending 3701",
+              enabledMethods: ["basic-card"]
+            }
+          );
 
-        registration.paymentAppManager.options.set(
-          "41856018-7631-409e-b45b-45641465aa09",
-          {
-            name: "American Express ending 5006",
-            enabledMethods: ["basic-card"]
-          }
-        );
+          registration.paymentAppManager.options.set(
+            "41856018-7631-409e-b45b-45641465aa09",
+            {
+              name: "American Express ending 5006",
+              enabledMethods: ["basic-card"]
+            }
+          );
 
-        registration.paymentAppManager.options.set(
-          "9f68610b-7515-4746-a3ec-a6c37fdc64f1",
-          {
-            name: "Master Card Business ending 9123",
-            enabledMethods: ["basic-card"]
-          }
-        );
-      });
+          registration.paymentAppManager.options.set(
+            "9f68610b-7515-4746-a3ec-a6c37fdc64f1",
+            {
+              name: "Master Card Business ending 9123",
+              enabledMethods: ["basic-card"]
+            }
+          );
+        });
+      }
     </script>
   </body>
 </html>
@@ -125,75 +127,77 @@ This algorithm describes how to use the registered payment information for each 
     <button onclick="install_payment_app()">Install Payment App</button>
     ...
     <script>
-      navigator.serviceWorker.register("worker.js")
-      .then(function(registration) {
-        registration.paymentAppManager.options.set(
-          "f89145cb-56f2-4912-b6a8-0f661c220ed4",
-          {
-            name: "Account ending in 9004",
-            enabledMethods: ["basic-card"]
-          }
-        );
+      function install_payment_app() {
+        navigator.serviceWorker.register("worker.js")
+        .then(function(registration) {
+          registration.paymentAppManager.options.set(
+            "f89145cb-56f2-4912-b6a8-0f661c220ed4",
+            {
+              name: "Account ending in 9004",
+              enabledMethods: ["basic-card"]
+            }
+          );
 
-        registration.paymentAppManager.options.set(
-          "e8f9349f-cf16-4828-9d85-dbc4cf8a2cbb",
-          {
-            name: "Account ending in 7195",
-            enabledMethods: ["basic-card"]
-          }
-        );
+          registration.paymentAppManager.options.set(
+            "e8f9349f-cf16-4828-9d85-dbc4cf8a2cbb",
+            {
+              name: "Account ending in 7195",
+              enabledMethods: ["basic-card"]
+            }
+          );
 
-        registration.paymentAppManager.options.set(
-          "93eb5ec1-e12f-473f-b7ff-8f52177f1ca0",
-          {
-            name: "Account ending in 3105",
-            enabledMethods: ["basic-card"]
-          }
-        );
+          registration.paymentAppManager.options.set(
+            "93eb5ec1-e12f-473f-b7ff-8f52177f1ca0",
+            {
+              name: "Account ending in 3105",
+              enabledMethods: ["basic-card"]
+            }
+          );
 
-        registration.paymentAppManager.wallets.set(
-          "5a18bcba-742a-4c14-9ae7-57e1bab0058a"
-          {
-            name: "American Express Personal",
-            icons: [
-              {
-                src: "americanexpresspersonal.png",
-                type: "image/png",
-                sizes: "64x64"
-              }, {
-                src: "americanexpresspersonal_192.png",
-                type: "image/png",
-                sizes: "192x192"
-              }
-            ],
-            optionKeys: [
-              "f89145cb-56f2-4912-b6a8-0f661c220ed4",
-              "e8f9349f-cf16-4828-9d85-dbc4cf8a2cbb"
-            ]
-          }
-        );
+          registration.paymentAppManager.wallets.set(
+            "5a18bcba-742a-4c14-9ae7-57e1bab0058a"
+            {
+              name: "American Express Personal",
+              icons: [
+                {
+                  src: "americanexpresspersonal.png",
+                  type: "image/png",
+                  sizes: "64x64"
+                }, {
+                  src: "americanexpresspersonal_192.png",
+                  type: "image/png",
+                  sizes: "192x192"
+                }
+              ],
+              optionKeys: [
+                "f89145cb-56f2-4912-b6a8-0f661c220ed4",
+                "e8f9349f-cf16-4828-9d85-dbc4cf8a2cbb"
+              ]
+            }
+          );
 
-        registration.paymentAppManager.wallets.set(
-          "674dff81-6bc8-4eaa-960f-3e8c3935e059",
-          {
-            name: "American Express Business",
-            icons: [
-              {
-                src: "americanexpressbusiness.png",
-                type: "image/png",
-                sizes: "64x64"
-              }, {
-                src: "americanexpressbusiness_192.png",
-                type: "image/png",
-                sizes: "192x192"
-              }
-            ],
-            optionKeys: [
-              "93eb5ec1-e12f-473f-b7ff-8f52177f1ca0"
-            ]
-          }
-        );
-      });
+          registration.paymentAppManager.wallets.set(
+            "674dff81-6bc8-4eaa-960f-3e8c3935e059",
+            {
+              name: "American Express Business",
+              icons: [
+                {
+                  src: "americanexpressbusiness.png",
+                  type: "image/png",
+                  sizes: "64x64"
+                }, {
+                  src: "americanexpressbusiness_192.png",
+                  type: "image/png",
+                  sizes: "192x192"
+                }
+              ],
+              optionKeys: [
+                "93eb5ec1-e12f-473f-b7ff-8f52177f1ca0"
+              ]
+            }
+          );
+        });
+      }
     </script>
   </body>
 </html>
