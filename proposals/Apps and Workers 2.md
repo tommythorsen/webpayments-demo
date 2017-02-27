@@ -23,12 +23,34 @@ dictionary PaymentAppDetails {
 };
 ```
 
-1. Let `paymentAppManager` be the `PaymentAppManager` for the Service Worker being installed.
+1. Let `paymentAppManager` be the `PaymentAppManager` instance that corresponds to the Service Worker being installed.
 1. Let `appDetails` be a new instance of `PaymentAppDetails`.
 1. Set the values of `appDetails.name` and `appDetails.icons` to the outcome of running the [**steps to install the web application**](https://w3c.github.io/manifest/#dfn-steps-to-install-the-web-application) from the [Web App Manifest specification](https://w3c.github.io/manifest/), with the modification that in step 2.3, the user agent MUST support falling back to Document metadata. We may also want to replace the "installation process" from the Web App Manifest specification with our own, in those steps.
 1. Set the value of the internal slot `paymentAppManager.[[appDetails]]` to `appDetails`.
 
 
 ### Algorithm that is run on PaymentRequest.show()
+
+This algorithm describes how to use the registered payment information for each service worker to construct a user experience for PaymentRequest.show(). We use the concepts of "1st level item" and "2nd level item" to describe the hierarchical presentation of Apps, Wallets and Options, be it on screen or in any other medium.
+
+1. For each `serviceWorker` in the set of all installed Service Workers, do:
+  1. Let `paymentAppManager` be the `PaymentAppManager` instance that corresponds to the Service Worker being installed.
+  1. If `paymentAppManager.options` does not contain any options, move onto the next Service Worker.
+  1. Let `options` be a shallow clone of `paymentAppManager.options`.
+  1. For each `option` in `options`, do:
+    1. If `option` does not [match](https://w3c.github.io/webpayments-payment-apps-api/#matching) the current Payment Request, remove it from `options`
+  1. For each `wallet` in `paymentAppManager.wallets`, do:
+    1. Create a 1st level item using `wallet.name` and `wallet.icons` as input.
+    1. For each `optionKey` in `wallet.optionKeys`, do:
+      1. Let `option` be the result of calling `options.get(optionKey)`.
+      1. Call `options.delete(optionKey)` to remove the option from `options`
+      1. If `option` is `null`, move onto the next `optionKey`.
+      1. Create a 2nd level item using `option.name` and `option.icons?` as input, and connect it to the 1st level item that we created for `wallet`.
+  1. If there are any remaining items in `options`, then:
+    1. Let `appDetails` be the value of `paymentAppManager.[[appDetails]]`.
+    1. Create a 1st level item using `appDetails.name` and `appDetails.icons` as input.
+    1. For each remaining `option` in `options`, do:
+      1. Create a 2nd level item using `option.name` and `option.icons` as input, and connect it to the 1st level item that we created for `appDetails`.
+
 
 ## Examples
