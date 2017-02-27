@@ -1,5 +1,8 @@
 # Payment Apps and Service Workers
 
+*(This proposal is deprecated in favor of [proposal #2](Apps%20and%20Workers%202.md))*
+
+
 There is currently consensus in the Web Payments Working Group that a Payment App should be a Web App that supports payments. We are still doing registration of Payment Options, and subscription to Payment Request Events, from Service Workers. Regardless of how Browser will choose to represent this in the UI, they will necessarily have to know something about the relationship between Payment Apps and Service Workers. Some discussion of this can be found from this comment onwards: https://github.com/w3c/webpayments-payment-apps-api/issues/98#issuecomment-277808484
 
 
