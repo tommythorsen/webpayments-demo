@@ -105,6 +105,7 @@ This algorithm describes how to use the registered payment information for each 
 ```
 
 **resulting UI**
+
 ![Resulting UI](bankofamerica.png)
 
 
@@ -199,4 +200,5 @@ This algorithm describes how to use the registered payment information for each 
 ```
 
 **resulting UI**
+
 ![Resulting UI](americanexpress.png)
