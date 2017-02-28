@@ -106,7 +106,7 @@ This algorithm describes how to use the registered payment information for each 
 </html>
 ```
 
-**resulting UI**
+**user interface**
 
 ![Resulting UI](bankofamerica.png)
 
@@ -203,6 +203,83 @@ This algorithm describes how to use the registered payment information for each 
 </html>
 ```
 
-**resulting UI**
+**user interface**
 
 ![Resulting UI](americanexpress.png)
+
+
+### An example which uses both wallets and the app entry
+
+**index.html**
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bank of America</title>
+    <link rel="icon" href="bankofamerica.png" type="image/png" sizes="64x64">
+    <link rel="icon" href="bankofamerica_192.png" type="image/png" sizes="192x192">
+  </head>
+  <body>
+    ...
+    <button onclick="install_payment_app()">Install Payment App</button>
+    ...
+    <script>
+      function install_payment_app() {
+        navigator.serviceWorker.register("worker.js")
+        .then(function(registration) {
+          registration.paymentAppManager.options.set(
+            "4e05bb9d-fe26-415b-9cc3-ee2fc3877315",
+            {
+              name: "Visa Cash Rewards ending 3701",
+              enabledMethods: ["basic-card"]
+            }
+          );
+
+          registration.paymentAppManager.options.set(
+            "41856018-7631-409e-b45b-45641465aa09",
+            {
+              name: "American Express ending 5006",
+              enabledMethods: ["basic-card"]
+            }
+          );
+
+          registration.paymentAppManager.options.set(
+            "9f68610b-7515-4746-a3ec-a6c37fdc64f1",
+            {
+              name: "Master Card Business ending 9123",
+              enabledMethods: ["basic-card"]
+            }
+          );
+
+          registration.paymentAppManager.wallets.set(
+            "674dff81-6bc8-4eaa-960f-3e8c3935e059",
+            {
+              name: "Bank of America Express",
+              icons: [
+                {
+                  src: "bankofamericaexpress.png",
+                  type: "image/png",
+                  sizes: "64x64"
+                }, {
+                  src: "bankofamericaexpress.png",
+                  type: "image/png",
+                  sizes: "192x192"
+                }
+              ],
+              optionKeys: [
+                "9f68610b-7515-4746-a3ec-a6c37fdc64f1",
+              ]
+            }
+          );
+        });
+      }
+    </script>
+  </body>
+</html>
+```
+
+**user interface**
+
+![Resulting UI](bankofamericaexpress.png)
+
+
