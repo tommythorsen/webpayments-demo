@@ -11,7 +11,7 @@ The disadvantage is that we lose the ability to identify the Payment App, which 
 
 ## Proposal
 
-This proposal may not be completely water proof at this point, but it's meant more as a starting point for further discussion, than as a ready-to-cut-and-paste-into-the-spec kind of proposal.
+This proposal may not be completely water proof at this point, but it's meant more as a starting point for further discussion, than as a ready-to-cut-and-paste-into-the-spec kind of proposal. In particular, the interaction with the Web App Manifest specification in step 3 of the first algorithm needs some thinking through.
 
 
 ### Algorithm that is run on Service Worker installation
