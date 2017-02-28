@@ -47,7 +47,7 @@ This algorithm describes how to use the registered payment information for each 
       1. Let `option` be the result of calling `options.get(optionKey)`.
       1. Call `options.delete(optionKey)` to remove the option from `options`
       1. If `option` is `null`, move onto the next `optionKey`.
-      1. Create a 2nd level item using `option.name` and `option.icons?` as input, and connect it to the 1st level item that we created for `wallet`.
+      1. Create a 2nd level item using `option.name` and `option.icons` as input, and connect it to the 1st level item that we created for `wallet`.
   1. If there are any remaining items in `options`, then:
     1. Let `appDetails` be the value of `paymentAppManager.[[appDetails]]`.
     1. Create a 1st level item using `appDetails.name` and `appDetails.icons` as input.
