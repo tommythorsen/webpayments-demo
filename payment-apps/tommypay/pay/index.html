@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Sign up for TommyPay</title>
+        <title>Pay with TommyPay</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="../files/style.css"/>
     </head>
     <body>
-        <div class="content" style="background-image: url(../files/cashbox.jpg)">
-            <h2 class="title">Pay with TommyPay</h2>
-            <div class="separator"></div>
+        <h2>Pay with TommyPay!</h2>
+        <p><i>A very primitive payment app that shows the entire payment request passed
+            to it as JSON.</i></p>
 
-            <p>Do you wish to make this payment?</p>
+        <pre style="display: none" id="paymentView"></pre>
 
-            <a class="button" id="paymentButton" href="#">Pay!</a>
-        </div>
-
-        <div class="footer">
-            <p>&copy; 2017 TommyPay</p>
-        </div>
+        <button id="paymentButton">Pay</button>
 
         <script>
+            var paymentView = document.getElementById("paymentView");
             var paymentButton = document.getElementById("paymentButton");
 
             navigator.serviceWorker.addEventListener('message', function(event) {
                 console.log("Page got message from SW");
+                paymentView.textContent = JSON.stringify(event.data, null, '  ');
                 paymentButton.onclick = function() {
                     console.log("Page passing response back to SW");
                     event.source.postMessage({
