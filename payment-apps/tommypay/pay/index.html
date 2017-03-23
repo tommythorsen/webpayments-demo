@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pay with TommyPay</title>
+        <title>Sign up for TommyPay</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../files/style.css"/>
     </head>
     <body>
-        <h2>Pay with TommyPay!</h2>
-        <p><i>A very primitive payment app that shows the entire payment request passed
-            to it as JSON.</i></p>
+        <div class="content" style="background-image: url(../files/cashbox.png)">
+            <h2 class="title">Pay with TommyPay</h2>
+            <div class="separator"></div>
 
-        <pre id="paymentView"></pre>
+            <p>Do you wish to make this payment?</p>
 
-        <button id="paymentButton">Pay</button>
+            <a class="button" id="paymentbutton" href="#">Pay!</a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2017 TommyPay</p>
+        </div>
 
         <script>
             var paymentView = document.getElementById("paymentView");
