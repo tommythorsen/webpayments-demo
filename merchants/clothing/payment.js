@@ -80,12 +80,12 @@ function buy(item, methodData, notSupportedCallback) {
         });
         request.show()
         .then(function(paymentResponse) {
-            console.log("payment response:");
-            console.log("  method name: " + paymentResponse.methodName);
-            console.log("  details: " + JSON.stringify(paymentResponse.details));
-            console.log("  payer name: " + paymentResponse.payerName);
-            console.log("  payer email: " + paymentResponse.payerEmail);
-            console.log("  payer phone: " + paymentResponse.payerPhone);
+            console.log("payment response: " + JSON.stringify(paymentResponse));
+            //console.log("  method name: " + paymentResponse.methodName);
+            //console.log("  details: " + JSON.stringify(paymentResponse.details));
+            //console.log("  payer name: " + paymentResponse.payerName);
+            //console.log("  payer email: " + paymentResponse.payerEmail);
+            //console.log("  payer phone: " + paymentResponse.payerPhone);
             if (paymentResponse) {
                 window.location.href = "receipt.html?key=" + key;
             }
