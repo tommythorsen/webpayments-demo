@@ -103,6 +103,21 @@ function buy(item, methodData, notSupportedCallback) {
     }
 }
 
+function buyWithAny(key) {
+    var item = items[key];
+    var methodData = [
+        {
+            supportedMethods: [
+                "https://tommypay.no/pay",
+                "https://rsolomakhin.github.io/bobpay",
+                "basic-card", "mastercard", "visa"
+            ]
+        }
+    ];
+
+    buy(item, methodData);
+}
+
 function buyWithTommyPay(key) {
     var item = items[key];
     var methodData = [
