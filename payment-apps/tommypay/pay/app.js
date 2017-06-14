@@ -21,7 +21,7 @@ self.addEventListener('paymentrequest', function(event) {
                 reject();
             }
         });
-        clients.openWindow("index.html").then(function(windowClient) {
+        event.openWindow("index.html").then(function(windowClient) {
             console.log("window opened!");
             windowClient.postMessage(event.data);
         })
