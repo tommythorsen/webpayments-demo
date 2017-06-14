@@ -43,17 +43,14 @@
                 console.log("install \"" + optionName + "\"");
                 navigator.serviceWorker.register("../pay/app.js")
                 .then(function(registration) {
-                    return registration.paymentAppManager.setManifest({
-                        name: "TommyPay",
-                        label: "TommyPay",
-                        options: [
-                        {
-                            name: optionName,
-                            label: optionName,
-                            id: numberField.value.substr(-4),
-                            enabledMethods: [ "https://tommypay.no/pay" ]
-                        }]
-                    });
+                    return Promise.all([
+                        registration.paymentManager.instruments.set(
+                            numberField.value.substr(-4),
+                            {
+                                name: optionName,
+                                enabledMethods: [ "https://tommypay.no/pay" ]
+                            }),
+                        ]);
                 }).then(function() {
                     var redirectUrl = getQueryParam("redirect_url");
                     window.location.href = redirectUrl ? redirectUrl : "confirmation.html";
